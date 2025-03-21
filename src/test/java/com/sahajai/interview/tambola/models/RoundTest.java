@@ -54,7 +54,7 @@ class RoundTest {
     }
 
     @Test
-    void testRoundCreation_InvalidTicketMetadata_ThrowsException() {
+    void testRoundCreation_InvalidRoundMetadata_OutsideRange_ThrowsException() {
         InvalidRoundMetadataException exception = assertThrows(InvalidRoundMetadataException.class, () ->
                 new Round.RoundBuilder()
                         .withId("Invalid Round")
@@ -63,6 +63,21 @@ class RoundTest {
                         .withTicketCols(10)
                         .withTicketMinNumber(1)
                         .withTicketMaxNumber(90)
+                        .build()
+        );
+        assertEquals("Round Metadata is invalid!", exception.getMessage());
+    }
+
+    @Test
+    void testRoundCreation_InvalidRoundMetadata_InvalidBounds_ThrowsException() {
+        InvalidRoundMetadataException exception = assertThrows(InvalidRoundMetadataException.class, () ->
+                new Round.RoundBuilder()
+                        .withId("Invalid Round")
+                        .withGame(game1)
+                        .withTicketRows(10)
+                        .withTicketCols(10)
+                        .withTicketMinNumber(90)
+                        .withTicketMaxNumber(1)
                         .build()
         );
         assertEquals("Round Metadata is invalid!", exception.getMessage());

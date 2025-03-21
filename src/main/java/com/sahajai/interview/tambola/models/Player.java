@@ -8,12 +8,6 @@ public class Player {
     private final String name;
     private List<Ticket> tickets;
 
-    public Player(int id, String name, List<Ticket> tickets) {
-        this.id = id;
-        this.name = name;
-        this.tickets = tickets;
-    }
-
     public Player(int id, String name) {
         this.id = id;
         this.name = name;
@@ -36,8 +30,10 @@ public class Player {
         return tickets;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public void addTickets(List<Ticket> tickets) {
+        if(tickets != null) {
+            this.tickets = tickets;
+        }
     }
 
     public void addTicket(Ticket ticket) {

@@ -15,6 +15,15 @@ public class Ticket {
         this(id, new RoundMetadata());
     }
 
+    public Ticket(String id, TicketNumber[][] grid) {
+        this.id = id;
+        this.grid = grid;
+        this.ticketNumbers = new HashMap<>();
+        populateTicketNumbers(grid);
+    }
+
+
+
     public Ticket(String id, RoundMetadata metadata) {
         this.id = id;
         this.grid = new TicketNumber[metadata.getTicketRows()][metadata.getTicketCols()];
@@ -79,6 +88,14 @@ public class Ticket {
                 System.out.print(String.format("%2d", tNum.getNumber()) + "  ");
             }
             System.out.println();
+        }
+    }
+
+    private void populateTicketNumbers(TicketNumber[][] grid) {
+        for (TicketNumber[] rows: grid) {
+            for(TicketNumber tNum: rows) {
+                ticketNumbers.put(tNum.getNumber(), tNum);
+            }
         }
     }
 }

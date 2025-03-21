@@ -2,7 +2,6 @@ package com.sahajai.interview.tambola.models;
 
 import com.sahajai.interview.tambola.strategies.GameWinningStrategy;
 import com.sahajai.interview.tambola.strategies.impl.BottomLineGameWinningStrategy;
-import com.sahajai.interview.tambola.strategies.impl.TopLineGameWinningStrategy;
 
 public class BottomLineGame extends Game {
 

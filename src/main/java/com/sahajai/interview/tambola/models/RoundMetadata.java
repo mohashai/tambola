@@ -13,7 +13,13 @@ public class RoundMetadata {
         this.ticketCols = Constants.DEFAULT_TICKET_COLS;
         this.minNumber = Constants.DEFAULT_TICKET_MIN_VALUE;
         this.maxNumber = Constants.DEFAULT_TICKET_MAX_VALUE;
-        ;
+    }
+
+    public RoundMetadata(int ticketRows, int ticketCols, int minNumber, int maxNumber) {
+        this.ticketRows = ticketRows;
+        this.ticketCols = ticketCols;
+        this.minNumber = minNumber;
+        this.maxNumber = maxNumber;
     }
 
     public int getTicketRows() {
@@ -49,6 +55,6 @@ public class RoundMetadata {
     }
 
     public boolean isValid() {
-        return (ticketRows * ticketCols) < (maxNumber - minNumber + 1);
+        return (minNumber < maxNumber) && (ticketRows * ticketCols) < (maxNumber - minNumber + 1);
     }
 }

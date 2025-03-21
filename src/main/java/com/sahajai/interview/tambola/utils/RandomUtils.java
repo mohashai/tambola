@@ -12,6 +12,7 @@ public class RandomUtils {
             numbers.add(i);
         }
         Collections.shuffle(numbers);
-        return numbers.subList(0, n);
+        int _n = Math.min(n, max - min + 1);
+        return numbers.subList(0, _n);
     }
 }
